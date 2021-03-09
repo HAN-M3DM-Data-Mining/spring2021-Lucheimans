@@ -12,6 +12,8 @@ output:
 
 
 ```{r}
+install.packages("class")
+library(class)
 library(tidyverse)
 library(googlesheets4)
 library(class)
@@ -102,14 +104,45 @@ summary(cleand2)
 ```
 
 The cleaned and normalized data can now be found under ## cleand2. As can be seen with the summary command, the data is now normalized.
--
+
+To eliminate biases and overfitting of the algorithm (Freecodecamp, 2020), data is splitted into two sets; a training and test set.
+
+```{r}
+train_df <- cleand2[1:7000,]
+testd_df <- cleand2[7000:8143,]
+
+train_label <- cleand2[1:7000, 1]
+test_label <- cleand2[7000:8143, 1]
+```
+
+
 ## Modeling
-text and code here
+
+I will change the names used for describing the vector to 'occupancy', since this was the original name of the data set.
+
+Furthermore, according to Amey Band (2020), the best way to find the optimal value for K is by taking the square root of N (observations). In this case this means a K of 90 would be suitable. However, you should make K an odd number, hence the number 89 is chosen.
+
+```{r}
+
+Occupancy_pred <- knn(train_df,testd_df, train_label, k= 89) 
+
+head(Occupancy_pred)
+
+```
+
 
 ## Evaluation and Deployment
-text and code here
+The model is created, and will be evaluated by running the prediction against the test data set, using the table command.
+
+```{r}
+
+table(Occupancy_pred, test_label) 
+
+```
+
 
 reviewer adds suggestions for improving the model
 
 References
 https://datasharkie.com/how-to-normalize-data-in-r/
+https://www.freecodecamp.org/news/key-machine-learning-concepts-explained-dataset-splitting-and-random-forest/
