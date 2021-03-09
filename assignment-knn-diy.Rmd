@@ -76,13 +76,33 @@ Additionally, I want to check if there is a need for standardization of the valu
 ```{r}
 summary(Rawd[c("Temperature", "Humidity", "Light", "CO2", "HumidityRatio")])
 ```
-There is a clear need for standardization since 'Light', 'CO2' and 'HumidityRatio' have very different means compared to 'Temperature' and 'Humidity'.
+There is a clear need for standardization since 'Light', 'CO2' and 'HumidityRatio' have very different means compared to 'Temperature' and 'Humidity', and KNN is sensitive to such big differences (Datasharkie, N/A).
+
+For the sake of keeping overview of the differently used data frames, I will create a second version of the cleand data frame to normalize upon.
 
 ```{r}
-
+cleand2 <- Rawd[-1]
+head(cleand2)
 ```
 
 
+```{r}
+Standardize <- function(x){return((x - min(x))/ (max(x) - min(x)))}
+
+cleand2$Temperature <- Standardize(cleand2$Temperature)
+cleand2$Humidity <- Standardize(cleand2$Humidity)
+cleand2$Light <- Standardize(cleand2$Light)
+cleand2$CO2 <- Standardize(cleand2$CO2)
+cleand2$HumidityRatio <- Standardize(cleand2$HumidityRatio)
+cleand2$Occupancy <- Standardize(cleand2$Occupancy)
+
+View(cleand2)
+summary(cleand2)
+
+```
+
+The cleaned and normalized data can now be found under ## cleand2. As can be seen with the summary command, the data is now normalized.
+-
 ## Modeling
 text and code here
 
@@ -90,3 +110,6 @@ text and code here
 text and code here
 
 reviewer adds suggestions for improving the model
+
+References
+https://datasharkie.com/how-to-normalize-data-in-r/
