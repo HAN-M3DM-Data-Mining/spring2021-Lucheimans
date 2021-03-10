@@ -10,6 +10,12 @@ output:
     toc_depth: 2
 ---
 
+```{r}
+install.packages('caret', dependencies = TRUE)
+library(ggplot2)
+library(caret)
+```
+
 
 ```{r}
 install.packages("class")
@@ -17,7 +23,6 @@ library(class)
 library(tidyverse)
 library(googlesheets4)
 library(class)
-library(caret)
 ```
 
 ---
@@ -111,8 +116,8 @@ To eliminate biases and overfitting of the algorithm (Freecodecamp, 2020), data 
 train_df <- cleand2[1:7000,]
 testd_df <- cleand2[7000:8143,]
 
-train_label <- cleand2[1:7000, 1]
-test_label <- cleand2[7000:8143, 1]
+train_label <- cleand2[1:7000, 6]
+test_label <- cleand2[7000:8143, 6]
 ```
 
 
@@ -132,17 +137,25 @@ head(Occupancy_pred)
 
 
 ## Evaluation and Deployment
-The model is created, and will be evaluated by running the prediction against the test data set, using the table command.
+The model is created, and will be evaluated by running the prediction against the test data set, using the confusionmatrix command.
+
 
 ```{r}
 
-table(Occupancy_pred, test_label) 
+confusionMatrix(table(Occupancy_pred, test_label)) 
 
 ```
+From the confusion matrix, the following model performances can be derived following guidelines set-up by Prateek Sharma (2019).
 
+- all predictions made by the model were either "True positive" or "True negative", indicating no value was predicted wrongly out of the test data set. This statement is backed up by the  accuracy level being 1, indicating all values were correctly predicted (Prateek Sharma, 2019). 
+
+
+All in all, one can assume that the set-up KNN learning model is able to correctly predict the occupancy levels for all of the test label.
 
 reviewer adds suggestions for improving the model
 
 References
 https://datasharkie.com/how-to-normalize-data-in-r/
 https://www.freecodecamp.org/news/key-machine-learning-concepts-explained-dataset-splitting-and-random-forest/
+https://towardsdatascience.com/decoding-the-confusion-matrix-bb4801decbb
+
