@@ -1,0 +1,85 @@
+---
+title: "Data Mining NOTEBOOK"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+
+## Lesson 4
+Example KNN learning
+
+```{r}
+url <- "https://raw.githubusercontent.com/businessdatasolutions/courses/main/data%20mining/gitbook/datasets/breastcancer.csv"
+rawDF <- read.csv(url)
+str(rawDF)
+```
+
+## lesson 5
+
+## review doc
+# Left out Standardization:
+
+```{r}
+Standardize <- function(x){return((x - min(x))/ (max(x) - min(x)))}
+
+cleand2$Temperature <- Standardize(cleand2$Temperature)
+cleand2$Humidity <- Standardize(cleand2$Humidity)
+cleand2$Light <- Standardize(cleand2$Light)
+cleand2$CO2 <- Standardize(cleand2$CO2)
+cleand2$HumidityRatio <- Standardize(cleand2$HumidityRatio)
+cleand2$Occupancy <- Standardize(cleand2$Occupancy)
+
+View(cleand2)
+summary(cleand2)
+
+```
+
+# wrong labels (should be the label; 6; occupancy)
+
+```{r}
+train_df_test <- cleand_test[1:7000,]
+testd_df_test <- cleand_test[7000:8143,]
+
+train_label_test <- cleand_test[1:7000, 1]
+test_label_test <- cleand_test[7000:8143, 1]
+```
+
+# knn learning code (square root which is an equal number and head reveals outcomes not related to label (should be noticed))
+
+```{r}
+
+Occupancy_pred_review <- knn(train_df_review,testd_df_review, train_label_review, k= 90) 
+
+head(Occupancy_pred_review)
+
+```
+
+# as a result of wrong knn learning learning code and wrong labels, the confusion matrix cannot be ran
+
+# after adjusting labels and learning code, the confusion matrix can run. However, if standardizatio has not been taken into account, the outcomes will have no value.
+
+
+
+
+
+
+
+
+
+
+
+
+
