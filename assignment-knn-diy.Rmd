@@ -121,9 +121,11 @@ test_label <- cleand2[7000:8143, 6]
 
 ## Modeling
 
-I will change the names used for describing the vector to 'occupancy', since this was the original name of the data set.
+I will change the names used for describing the data set related vectors (rawd, cleand, testd etc.) to 'occupancy', since this was the original name of the data set.
 
 Furthermore, according to Amey Band (2020), the best way to find the optimal value for K is by taking the square root of N (observations). In this case this means a K of 90 would be suitable. However, you should make K an odd number, hence the number 89 is chosen.
+
+The code for generating the knn model:
 
 ```{r}
 
@@ -143,6 +145,7 @@ The model is created, and will be evaluated by running the prediction against th
 confusionMatrix(table(Occupancy_pred, test_label)) 
 
 ```
+
 From the confusion matrix, the following model performances can be derived following guidelines set-up by Prateek Sharma (2019).
 
 - all predictions made by the model were either "True positive" or "True negative", indicating no value was predicted wrongly out of the test data set. This statement is backed up by the  accuracy level being 1, indicating all values were correctly predicted (Prateek Sharma, 2019). 
