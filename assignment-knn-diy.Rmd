@@ -13,14 +13,12 @@ output:
 # setup
 
 ```{r}
-install.packages('caret', dependencies = TRUE)
 library(ggplot2)
 library(caret)
 ```
 
 
 ```{r}
-install.packages("class")
 library(class)
 library(tidyverse)
 library(googlesheets4)
@@ -92,14 +90,13 @@ head(cleand2)
 
 
 ```{r}
-Standardize <- function(x){return((x - min(x))/ (max(x) - min(x)))}
+normalize <- function(x){return((x - min(x))/ (max(x) - min(x)))}
 
-cleand2$Temperature <- Standardize(cleand2$Temperature)
-cleand2$Humidity <- Standardize(cleand2$Humidity)
-cleand2$Light <- Standardize(cleand2$Light)
-cleand2$CO2 <- Standardize(cleand2$CO2)
-cleand2$HumidityRatio <- Standardize(cleand2$HumidityRatio)
-cleand2$Occupancy <- Standardize(cleand2$Occupancy)
+nCols <- dim(cleand2)[6]
+cleanDF_n <- sapply(1:5,
+                    function(x) {
+  normalize(cleand2[,x])
+}) %>% as.data.frame()
 
 View(cleand2)
 summary(cleand2)
