@@ -98,8 +98,8 @@ cleanDF_n <- sapply(1:5,
   normalize(cleand2[,x])
 }) %>% as.data.frame()
 
-View(cleand2)
-summary(cleand2)
+View(cleandDF_n)
+summary(cleanDF_n)
 
 ```
 
@@ -108,8 +108,8 @@ The cleaned and normalized data can now be found under ## cleand2. As can be see
 To eliminate biases and overfitting of the algorithm (Freecodecamp, 2020), data is splitted into two sets; a training and test set.
 
 ```{r}
-train_df <- cleand2[1:7000,]
-testd_df <- cleand2[7000:8143,]
+train_df <- cleanDF_n[1:7000,]
+testd_df <- cleanDF_n[7000:8143,]
 
 train_label <- cleand2[1:7000, 6]
 test_label <- cleand2[7000:8143, 6]
