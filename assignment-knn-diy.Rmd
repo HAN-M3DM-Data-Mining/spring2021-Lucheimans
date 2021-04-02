@@ -1,13 +1,17 @@
 ---
 title: "Assigment - kNN DIY"
 author:
-  - Luc Heimans - Author
-  - Daan Plass - Reviewer
+- Luc Heimans - Author
+- Daan Plass - Reviewer
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-   html_notebook:
-    toc: true
+  html_notebook:
+    toc: yes
     toc_depth: 2
+  html_document:
+    toc: yes
+    toc_depth: '2'
+    df_print: paged
 ---
 
 ## Introduction
@@ -159,10 +163,8 @@ All in all, one can assume that the set-up KNN learning model is able to correct
 
 
 
-
-############################################   REVIEW STARTS HERE  ###############################################################
-### Changes in the review document compared to what was to be reviewed are indicated with "### REVIEW ADJUSTEMENT X"
-
+# Reviewed version starts here
+Adjustments/ review comments are indicated using "review adjustement X"
 
 
 

@@ -172,8 +172,11 @@ confusionMatrix(predVec1, testDF1$label, positive = "1", dnn = c("Prediction", "
 
 
 
-############################################ REVIEW STARTS HERE ###############################################################
-### Changes in the review document compared to what was to be reviewed are indicated with "### REVIEW ADJUSTEMENT X"
+
+
+# Reviewed version starts here
+Adjustments/ review comments are indicated using "review adjustement X"
+
 
 
 
