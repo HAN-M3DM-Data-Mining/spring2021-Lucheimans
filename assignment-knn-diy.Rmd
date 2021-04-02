@@ -163,8 +163,8 @@ All in all, one can assume that the set-up KNN learning model is able to correct
 
 
 
-# Reviewed version starts here
-Adjustments/ review comments are indicated using "review adjustement X"
+## Reviewed version starts here
+Adjustments/ review comments are indicated using "review adjustment X"
 
 
 
